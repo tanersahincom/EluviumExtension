@@ -1,0 +1,99 @@
+<mat-tab-group>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">account_box</mat-icon>
+      &nbsp;
+      <p>{{ 'Account.MyAccount' | translate }}</p>
+    </ng-template>
+    <div class="center">
+      <br />
+      <img src="../assets/user.png" class="profilePicture" />
+      <h2>{{fullName}}</h2>
+      <p>{{'Account.Membership' | translate }} : {{registerDate}}</p>
+      <p>{{'Common.MailAdress' | translate }} : {{mail}}</p>
+      <p>{{ 'Account.ProductName' | translate }} : Eluvium Extension</p>
+      <button
+        mat-raised-button
+        class="whiteButton wideButton"
+        (click)="manageMyAccount()"
+      >
+        <mat-icon>account_circle</mat-icon> {{ 'Account.ManageMyAccount' |
+        translate }}
+      </button>
+      <br />
+      <br />
+      <button
+        mat-raised-button
+        (click)="lock()"
+        class="whiteButton wideButton"
+      >
+        <mat-icon>lock</mat-icon> {{ 'Account.LockNow' | translate }}
+      </button>
+      <br />
+      <br />
+      <button
+        mat-raised-button
+        color="warn"
+        class="redButton wideButton"
+        (click)="logout()"
+      >
+        <mat-icon>exit_to_app</mat-icon> {{ 'Account.LogoutNow' | translate }}
+      </button>
+      <br />
+    </div>
+    <br />
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">devices</mat-icon>
+      &nbsp; {{ 'Account.Devices' | translate }}
+    </ng-template>
+    <div>
+      <br />
+      <img src="../assets/user.png" class="profilePicture" />
+      <h2>{{fullName}}</h2>
+      <br />
+      <br />
+    </div>
+    <cdk-virtual-scroll-viewport style="height:200px" itemSize="90">
+      <div class="viewportAlign">
+        <div style="text-align: left" *ngFor="let item of devices">
+          <img
+            *ngIf="item.deviceType === 0"
+            class="middleAlign"
+            src="../assets/browser.png"
+          />
+          <img
+            *ngIf="item.deviceType === 1"
+            class="middleAlign"
+            src="../assets/smartphone.png"
+          />
+          <img
+            *ngIf="item.deviceType === 2"
+            class="middleAlign"
+            src="../assets/computer.png"
+          />
+          <span class="middleAlign"
+            >&nbsp;
+            <img
+              *ngIf="item.deviceId === deviceId"
+              src="../assets/online.png"
+            />
+            {{item.deviceName}} &nbsp;
+            <button
+              mat-mini-fab
+              color="warn"
+              class="redButton"
+              style="margin-top:4%;"
+              (click)="disconnectDevice(item.deviceId)"
+            >
+              <mat-icon>logout</mat-icon>
+            </button>
+          </span>
+        </div>
+        <br />
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </mat-tab>
+</mat-tab-group>
+<ngx-bottom-nav [items]="items"></ngx-bottom-nav>

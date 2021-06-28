@@ -1,0 +1,36 @@
+.center {
+  text-align: center;
+}
+p {
+  font-size: small;
+}
+.whiteButton:hover {
+  background-color: #dcdcdc;
+}
+.redButton:hover {
+  background-color: #d00000;
+}
+div {
+  text-align: center;
+}
+img {
+  vertical-align: middle;
+}
+span {
+  vertical-align: middle;
+}
+.profilePicture {
+  width:100px;
+  height:100px;
+}
+.wideButton {
+  width: 85%;
+}
+.middleAlign {
+  vertical-align:middle
+}
+.viewportAlign {
+  float:left;
+  margin-left:6%;
+  margin-right:6%;
+}
