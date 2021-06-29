@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Eluvium",
   "short_name": "Eluvium",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Eluvium Extension",
   "icons": {
 		"48": "icon48.png",
