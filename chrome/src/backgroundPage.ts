@@ -268,3 +268,54 @@ function changeScreenResolution () {
     this.availHeight = availHeight
   })()
 }
+
+// Context Menus
+chrome.contextMenus.create({
+  title: "Generate Password",
+  contexts:["editable"], 
+  onclick: function(e){
+    var password = generatePassword();
+    fill(" ", password);
+    copyToClipboard(password);
+  } 
+}); 
+
+
+function generatePassword () {
+  const numberChars = '0123456789'
+  const upperChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  const lowerChars = 'abcdefghiklmnopqrstuvwxyz'
+  const symbolChars = '!+%&/()=?_->£#$½{[]}|'
+  const allChars: string = numberChars + upperChars + lowerChars + symbolChars
+  let randPasswordArray = Array(18)
+  randPasswordArray.push(numberChars)
+  randPasswordArray.push(upperChars)
+  randPasswordArray.push(lowerChars)
+  randPasswordArray.push(symbolChars)
+  randPasswordArray = randPasswordArray.fill(allChars, 3)
+  const result = shuffleArray(
+    randPasswordArray.map(function (x) {
+      return x[Math.floor(Math.random() * x.length)]
+    })
+  ).join('')
+  return result;
+}
+
+ function shuffleArray (array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    const temp = array[i]
+    array[i] = array[j]
+    array[j] = temp
+  }
+  return array
+}
+
+function copyToClipboard(value) {
+  var tempInput = document.createElement("input");
+  tempInput.value = value;
+  document.body.appendChild(tempInput);
+  tempInput.select();
+  document.execCommand("copy");
+  document.body.removeChild(tempInput);
+}

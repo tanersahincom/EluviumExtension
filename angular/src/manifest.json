@@ -4,6 +4,10 @@
   "short_name": "Eluvium",
   "version": "2.2.0",
   "description": "Eluvium Extension",
+  "icons": {
+		"48": "icon48.png",
+		"128": "icon128.png"
+	},
   "permissions": [
     "activeTab",
     "storage",
@@ -14,6 +18,7 @@
     "<all_urls>",
     "webRequest",
     "webRequestBlocking",
+    "contextMenus",
     "http://*/",
     "https://*/"
   ],
